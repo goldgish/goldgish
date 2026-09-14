@@ -31,6 +31,6 @@ clone 下来能直接复跑。语音场景下用户不看屏幕，「什么时�
 [![last commit](https://img.shields.io/github/last-commit/goldgish/voiceshell-os?style=flat-square&label=%E6%9C%80%E8%BF%91%E6%9B%B4%E6%96%B0&color=4D6BFE)](https://github.com/goldgish/voiceshell-os)
 [![license](https://img.shields.io/github/license/goldgish/voiceshell-os?style=flat-square&label=%E8%AE%B8%E5%8F%AF&color=3FB950)](https://github.com/goldgish/voiceshell-os/blob/main/LICENSE)
 
-📮 邮箱待填 · 605120151@QQ.com
+📮 邮箱 · 605120151@QQ.com
 
 </div>
