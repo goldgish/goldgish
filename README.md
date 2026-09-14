@@ -1,45 +1,37 @@
 <div align="center">
 
-# 给 agent 造接口，也造验收
+# 我是产品经理，喜欢做点 AI native 的事
 
-**AI Agent 产品经理** · 产品出身，能自己写插件
-
-做的都是同一件事：让 agent 从「demo 很惊艳」走到「日常敢用」
+**AI Agent 产品经理** · 能自己动手写点插件
 
 </div>
 
 ---
 
-agent 的能力早就不是瓶颈了，卡住的是**人机接口**。
+工作之外，我喜欢自己动手做点小东西 —— 不为别的，就是想知道这东西到底长什么样。
 
-- 它做完事了，但你得**回到屏幕前**才知道做没做完
-- 它要动危险操作，审批却逼你切窗口、点鼠标
-- 它想了四十秒，你看不出它在干活还是在死循环
-- 而这条通道本身靠不靠谱，得有办法量出来
+**给 agent 做插件，是我目前找到的最好的了解方式。**
 
-这几个题，我各做了一遍。
+插件得像积木一样接得上 agent。想接得上，就得先知道 agent 现在是什么形状：工具调用怎么触发、
+权限在哪一层拦、上下文怎么进怎么出、出错的时候人会卡在哪一步。这些读文档看不出来，
+得自己插一块上去试。
 
-## 精选项目
+下面几块就是我插过的。
 
-| 项目 | 通道 | 解决什么 |
-| :--- | :--- | :--- |
-| **[voiceshell-os](https://github.com/goldgish/voiceshell-os)** · 声壳 | 输出 | 说一句话，全程不看屏幕。10 例真实任务实测：首声 1.3–3.0s、回合完成度 10/10、B 层评审均分 4.78/5 |
-| **[dsh-gamepad-approval](https://github.com/goldgish/dsh-gamepad-approval)** | 审批 | 高危操作要过手柄物理按键，A 批 / B 驳。18 条规则，无手柄即驳回（fail-closed）· 已发布 npm |
-| **[dsh-agent-trace](https://github.com/goldgish/dsh-agent-trace)** | 观察 | 把 agent 的推理链与并行工具调用，画成可交互的 DAG |
-| **[kouyu-ceping](https://github.com/goldgish/kouyu-ceping)** | 验收 | 口语测评：上传音视频 → 逐字打分 → LLM 生成改进建议 |
+## 做过的项目
 
-前三个是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 插件，挂在同一个 TUI 上，各占一个通道，互不干扰。
+| 项目 | 是什么 |
+| :--- | :--- |
+| **[voiceshell-os](https://github.com/goldgish/voiceshell-os)** | 不看屏幕的语音外壳：说一句话，agent 把活干完，再用语音讲给你听 |
+| **[dsh-gamepad-approval](https://github.com/goldgish/dsh-gamepad-approval)** | 拿 Xbox 手柄审批 agent 的高危操作，A 批准 / B 驳回 · 已发布 npm |
+| **[dsh-agent-trace](https://github.com/goldgish/dsh-agent-trace)** | 把 agent 的推理过程和工具调用画成一张图，看懂它在干什么 |
+| **[kouyu-ceping](https://github.com/goldgish/kouyu-ceping)** | 口语测评：上传一段音视频，逐字打分并给出改进建议 |
 
-## 我怎么做事
+前三个是我自己写着玩的，都是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的插件。
+kouyu-ceping 不一样 —— 那个是帮别人解决实际问题做的。
 
-**① 先定「什么算好」，再动手改。**
-voiceshell-os 的评测标准是公开的 —— A 层 9 项硬指标（门槛制，任一不过即整例失败）+ B 层 5 维评审（1–5 分）。跑器、用例集、防回归自测一并入库，clone 下来就能复跑。数字不是我说的，是跑出来的。
-
-**② 假绿比红更危险。**
-这个项目迭代五轮，其中三次「全绿」其实是误判：TTS 顶断把 38 字的答案掐在 1.1 秒；判词表太窄，把「域名解析不了」这种正确行为判成了失败；线上提示词比测试侧少了整批规则，导致长任务静默 50 秒。三件事都写进仓库的复盘章节了。
-
-**③ 播报即产品。**
-语音场景里用户不看屏幕，说话就是唯一反馈通道。所以「什么时候该开口」是产品设计，不是日志打印 —— 播报有配额、有禁区、35 秒没动静必须出声、不可逆操作先问再动。
+voiceshell-os 里顺手做了一套评测：A 层 9 项硬指标 + B 层 5 维评审，跑器和用例集都在仓库里，
+clone 下来能直接复跑。语音场景下用户不看屏幕，「什么时候该说话」本身就是产品，不测就没法调。
 
 ---
 
@@ -48,8 +40,6 @@ voiceshell-os 的评测标准是公开的 —— A 层 9 项硬指标（门槛�
 [![npm](https://img.shields.io/npm/v/dsh-gamepad-approval?style=flat-square&label=npm&color=CB3837)](https://www.npmjs.com/package/dsh-gamepad-approval)
 [![last commit](https://img.shields.io/github/last-commit/goldgish/voiceshell-os?style=flat-square&label=%E6%9C%80%E8%BF%91%E6%9B%B4%E6%96%B0&color=4D6BFE)](https://github.com/goldgish/voiceshell-os)
 [![license](https://img.shields.io/github/license/goldgish/voiceshell-os?style=flat-square&label=%E8%AE%B8%E5%8F%AF&color=3FB950)](https://github.com/goldgish/voiceshell-os/blob/main/LICENSE)
-
-**想聊 agent 的产品化、或者接口层怎么做，随时找我。**
 
 📮 邮箱待填 · 💻 [github.com/goldgish](https://github.com/goldgish)
 
